@@ -1,0 +1,58 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #0d0d0d;
+    color: #f0f0f0;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #1e90ff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#map {
+    display: grid;
+    margin-top: 20px;
+    grid-gap: 5px;
+    justify-content: center;
+}
+
+.cell {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #333;
+    font-size: 0.8rem;
+    color: white;
+    background-color: #222;
+}
+
+.cell.space-station { background-color: #1e90ff; }
+.cell.asteroid { background-color: #a52a2a; }
+.cell.alien-terrain { background-color: #228b22; }
+.cell.void { background-color: #000; }
+.cell.trade-hub { background-color: #ffa500; }
+.cell.unknown { background-color: #8a2be2; }
