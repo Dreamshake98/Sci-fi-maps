@@ -1,0 +1,53 @@
+// Define map dimensions and terrain types
+const MAP_WIDTH = 20;
+const MAP_HEIGHT = 10;
+
+const TERRAIN_TYPES = {
+    "S": "space-station",
+    "A": "asteroid",
+    "E": "alien-terrain",
+    "V": "void",
+    "T": "trade-hub",
+    "X": "unknown"
+};
+
+// Function to generate a random map
+function generateMap() {
+    const map = [];
+    const terrainKeys = Object.keys(TERRAIN_TYPES);
+
+    for (let i = 0; i < MAP_HEIGHT; i++) {
+        const row = [];
+        for (let j = 0; j < MAP_WIDTH; j++) {
+            const randomTerrain = terrainKeys[Math.floor(Math.random() * terrainKeys.length)];
+            row.push(randomTerrain);
+        }
+        map.push(row);
+    }
+    return map;
+}
+
+// Function to render the map on the web page
+function renderMap(map) {
+    const mapContainer = document.getElementById("map");
+    mapContainer.innerHTML = ""; // Clear previous map
+    mapContainer.style.gridTemplateColumns = `repeat(${MAP_WIDTH}, 1fr)`;
+
+    map.forEach(row => {
+        row.forEach(cell => {
+            const cellDiv = document.createElement("div");
+            cellDiv.className = `cell ${TERRAIN_TYPES[cell]}`;
+            cellDiv.textContent = cell; // Optional: Display terrain key
+            mapContainer.appendChild(cellDiv);
+        });
+    });
+}
+
+// Generate and display the map when the button is clicked
+document.getElementById("generateButton").addEventListener("click", () => {
+    const newMap = generateMap();
+    renderMap(newMap);
+});
+
+// Initial map generation
+renderMap(generateMap());
